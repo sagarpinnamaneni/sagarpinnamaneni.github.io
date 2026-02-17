@@ -11,15 +11,16 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #272829;
+  padding-top: 70px;
 }
 
 a {
-  color: #149ddd;
+  color: #28a745;
   text-decoration: none;
 }
 
 a:hover {
-  color: #37b3ed;
+  color: #30c750;
   text-decoration: none;
 }
 
@@ -42,7 +43,7 @@ h6 {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #149ddd;
+  background: #28a745; /* Changed from #149ddd */
   width: 40px;
   height: 40px;
   border-radius: 50px;
@@ -56,7 +57,7 @@ h6 {
 }
 
 .back-to-top:hover {
-  background: #2eafec;
+  background: #30c750; /* Changed from #2eafec */
   color: #fff;
 }
 
@@ -66,53 +67,46 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Header
+# Top Navigation Bar
 --------------------------------------------------------------*/
-#header {
+#top-navbar {
   position: fixed;
   top: 0;
-  left: 0;
-  bottom: 0;
-  width: 300px;
-  transition: all ease-in-out 0.5s;
-  z-index: 9997;
-  transition: all 0.5s;
-  padding: 0 15px;
-  background: #040b14;
-  overflow-y: auto;
+  width: 100%;
+  background: #fff; /* White background for the top navbar */
+  padding: 10px 0;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  z-index: 9997; /* Ensure it's above other content */
 }
 
-#header .profile img {
-  margin: 15px auto;
-  display: block;
-  width: 120px;
-  border: 8px solid #2c2f3f;
+#top-navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-#header .profile h1 {
+#top-navbar h1 {
   font-size: 24px;
   margin: 0;
   padding: 0;
   font-weight: 600;
-  -moz-text-align-last: center;
-  text-align-last: center;
   font-family: "Poppins", sans-serif;
 }
 
-#header .profile h1 a,
-#header .profile h1 a:hover {
-  color: #fff;
+#top-navbar h1 a,
+#top-navbar h1 a:hover {
+  color: #050d18; /* Darker color for name in top bar */
   text-decoration: none;
 }
 
-#header .profile .social-links a {
+#top-navbar .social-links a {
   font-size: 18px;
   display: inline-block;
-  background: #212431;
-  color: #fff;
+  background: #e6f9e8; /* Changed from #e6f2fa */
+  color: #28a745; /* Changed from #149ddd */
   line-height: 1;
   padding: 8px 0;
-  margin-right: 4px;
+  margin-left: 10px;
   border-radius: 50%;
   text-align: center;
   width: 36px;
@@ -120,38 +114,35 @@ h6 {
   transition: 0.3s;
 }
 
-#header .profile .social-links a:hover {
-  background: #149ddd;
+#top-navbar .social-links a:hover {
+  background: #28a745; /* Changed from #149ddd */
   color: #fff;
-  text-decoration: none;
-}
-
-#main {
-  margin-left: 300px;
-}
-
-@media (max-width: 1199px) {
-  #header {
-    left: -300px;
-  }
-
-  #main {
-    margin-left: 0;
-  }
 }
 
 /*--------------------------------------------------------------
-# Navigation Menu
+# Main Content Area
 --------------------------------------------------------------*/
-/* Desktop Navigation */
-.nav-menu {
-  padding: 30px 0 0 0;
+#main {
+  margin-top: 0; /* Handled by body padding-top */
 }
 
-.nav-menu * {
+
+
+
+
+/*--------------------------------------------------------------
+# Navigation Menu (adapted for top navbar)
+--------------------------------------------------------------*/
+.nav-menu {
+  padding: 0; /* No top padding for horizontal menu */
+}
+
+.nav-menu ul {
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 
 .nav-menu>ul>li {
@@ -163,16 +154,16 @@ h6 {
 .nav-menu a:focus {
   display: flex;
   align-items: center;
-  color: #a8a9b4;
-  padding: 12px 15px;
-  margin-bottom: 8px;
+  color: #45505b; /* Darker color for nav links */
+  padding: 10px 15px; /* Adjust padding for top bar */
+  margin: 0 5px; /* Spacing between nav items */
   transition: 0.3s;
   font-size: 15px;
 }
 
 .nav-menu a i,
 .nav-menu a:focus i {
-  font-size: 24px;
+  font-size: 18px; /* Smaller icons for top bar */
   padding-right: 8px;
   color: #6f7180;
 }
@@ -182,45 +173,100 @@ h6 {
 .nav-menu .active:focus,
 .nav-menu li:hover>a {
   text-decoration: none;
-  color: #fff;
+  color: #28a745; /* Blue for active/hover */
 }
 
 .nav-menu a:hover i,
 .nav-menu .active i,
 .nav-menu .active:focus i,
 .nav-menu li:hover>a i {
-  color: #149ddd;
+  color: #28a745; /* Blue for active/hover */
 }
 
 /* Mobile Navigation */
+/* Re-position mobile toggle for top bar */
 .mobile-nav-toggle {
-  position: fixed;
-  right: 15px;
-  top: 15px;
-  z-index: 9998;
-  border: 0;
-  font-size: 24px;
-  transition: all 0.4s;
-  outline: none !important;
-  background-color: #149ddd;
-  color: #fff;
-  width: 40px;
-  height: 40px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 0;
-  border-radius: 50px;
+  position: static; /* No longer fixed to top-right of viewport */
+  margin-left: 15px; /* Space from right edge of name */
+  color: #050d18; /* Darker color for toggle icon */
+  font-size: 28px;
   cursor: pointer;
+  line-height: 0;
+  transition: 0.5s;
 }
 
-.mobile-nav-active {
+/* Specific styles for mobile menu when active */
+.mobile-nav-active body {
   overflow: hidden;
 }
 
-.mobile-nav-active #header {
+.mobile-nav-active #navbarNav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
+  z-index: 9999;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 60px 20px;
+  transition: ease-in-out 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
+
+.mobile-nav-active #navbarNav .nav-menu ul {
+  flex-direction: column;
+  width: 100%;
+}
+
+.mobile-nav-active #navbarNav .nav-menu li {
+  width: 100%;
+}
+
+.mobile-nav-active #navbarNav .nav-menu a {
+  color: #fff;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  text-align: left;
+}
+
+.mobile-nav-active #navbarNav .nav-menu a i {
+  color: #fff;
+}
+.mobile-nav-active #navbarNav .social-links {
+  margin-top: 20px;
+  padding-left: 20px;
+  width: 100%;
+  text-align: left;
+}
+.mobile-nav-active #navbarNav .social-links a {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  margin-right: 10px;
+}
+.mobile-nav-active #navbarNav .social-links a:hover {
+  background: #28a745;
+  border-color: #28a745;
+}
+.mobile-nav-active .mobile-nav-toggle {
+  position: fixed; /* Keep toggle fixed to top right when menu is open */
+  right: 15px;
+  top: 15px;
+  color: #fff;
+  background: none;
+}
+.mobile-nav-active .mobile-nav-toggle.bi-list {
+  display: none; /* Hide list icon when menu is open */
+}
+.mobile-nav-active .mobile-nav-toggle.bi-x {
+  display: inline-flex; /* Show x icon when menu is open */
+}
+
+
 
 /*--------------------------------------------------------------
 # Hero Section
@@ -268,7 +314,7 @@ h6 {
   color: #fff;
   padding-bottom: 4px;
   letter-spacing: 1px;
-  border-bottom: 3px solid #149ddd;
+  border-bottom: 3px solid #28a745;
 }
 
 @media (min-width: 1024px) {
@@ -321,7 +367,7 @@ section {
   display: block;
   width: 50px;
   height: 3px;
-  background: #149ddd;
+  background: #28a745; /* Changed from #149ddd */
   bottom: 0;
   left: 0;
 }
@@ -357,7 +403,7 @@ section {
 .about .content ul i {
   font-size: 16px;
   margin-right: 5px;
-  color: #149ddd;
+  color: #28a745; /* Changed from #149ddd */
   line-height: 0;
 }
 
@@ -380,7 +426,7 @@ section {
 .facts .count-box i {
   display: block;
   font-size: 44px;
-  color: #149ddd;
+  color: #28a745;
   float: left;
   line-height: 0;
 }
@@ -413,7 +459,7 @@ section {
 }
 
 .facts .count-box a:hover {
-  color: #1f5297;
+  color: #1e843b;
 }
 
 /*--------------------------------------------------------------
@@ -450,7 +496,7 @@ section {
   width: 1px;
   height: 10px;
   transition: 0.9s;
-  background-color: #149ddd;
+  background-color: #28a745; /* Changed from #149ddd */
 }
 
 /*--------------------------------------------------------------
@@ -467,7 +513,7 @@ section {
 .resume .resume-item {
   padding: 0 0 20px 20px;
   margin-top: -2px;
-  border-left: 2px solid #1f5297;
+  border-left: 2px solid #1e843b; /* Changed from #1f5297 */
   position: relative;
 }
 
@@ -483,7 +529,7 @@ section {
 
 .resume .resume-item h5 {
   font-size: 16px;
-  background: #e4edf9;
+  background: #e8f7ea;
   padding: 5px 15px;
   display: inline-block;
   font-weight: 600;
@@ -511,7 +557,7 @@ section {
   left: -9px;
   top: 0;
   background: #fff;
-  border: 2px solid #1f5297;
+  border: 2px solid #1e843b; /* Changed from #1f5297 */
 }
 
 /*--------------------------------------------------------------
@@ -546,7 +592,7 @@ section {
 
 .portfolio #portfolio-flters li:hover,
 .portfolio #portfolio-flters li.filter-active {
-  color: #149ddd;
+  color: #28a745;
 }
 
 .portfolio #portfolio-flters li:last-child {
@@ -589,17 +635,17 @@ section {
   color: #fff;
   font-size: 28px;
   text-align: center;
-  background: rgba(20, 157, 221, 0.75);
+  background: rgba(40, 167, 69, 0.75);
   transition: 0.3s;
   width: 50%;
 }
 
 .portfolio .portfolio-wrap .portfolio-links a:hover {
-  background: rgba(20, 157, 221, 0.95);
+  background: rgba(40, 167, 69, 0.95);
 }
 
 .portfolio .portfolio-wrap .portfolio-links a+a {
-  border-left: 1px solid #37b3ed;
+  border-left: 1px solid #30c750;
 }
 
 .portfolio .portfolio-wrap:hover::before {
@@ -636,11 +682,11 @@ section {
   height: 12px;
   background-color: #fff;
   opacity: 1;
-  border: 1px solid #149ddd;
+  border: 1px solid #28a745;
 }
 
 .portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #149ddd;
+  background-color: #28a745;
 }
 
 .portfolio-details .portfolio-info {
@@ -694,10 +740,10 @@ section {
   justify-content: center;
   width: 54px;
   height: 54px;
-  background: #149ddd;
+  background: #28a745;
   border-radius: 50%;
   transition: 0.5s;
-  border: 1px solid #149ddd;
+  border: 1px solid #28a745;
 }
 
 .services .icon i {
@@ -711,7 +757,7 @@ section {
 }
 
 .services .icon-box:hover .icon i {
-  color: #149ddd;
+  color: #28a745;
 }
 
 .services .title {
@@ -726,13 +772,7 @@ section {
 }
 
 .services .title a:hover {
-  color: #149ddd;
-}
-
-.services .description {
-  margin-left: 80px;
-  line-height: 24px;
-  font-size: 14px;
+  color: #28a745;
 }
 
 /*--------------------------------------------------------------
@@ -770,7 +810,7 @@ section {
 
 .testimonials .testimonial-item .quote-icon-left,
 .testimonials .testimonial-item .quote-icon-right {
-  color: #c3e8fa;
+  color: #d1f0d6;
   font-size: 26px;
 }
 
@@ -820,11 +860,11 @@ section {
   height: 12px;
   background-color: #fff;
   opacity: 1;
-  border: 1px solid #149ddd;
+  border: 1px solid #28a745;
 }
 
 .testimonials .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #149ddd;
+  background-color: #28a745;
 }
 
 /*--------------------------------------------------------------
@@ -843,11 +883,11 @@ section {
 
 .contact .info i {
   font-size: 20px;
-  color: #149ddd;
+  color: #28a745;
   float: left;
   width: 44px;
   height: 44px;
-  background: #dff3fc;
+  background: #e6f9e8;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -874,37 +914,9 @@ section {
   padding-top: 5px;
 }
 
-.contact .info .social-links {
-  padding-left: 60px;
-}
 
-.contact .info .social-links a {
-  font-size: 18px;
-  display: inline-block;
-  background: #333;
-  color: #fff;
-  line-height: 1;
-  padding: 8px 0;
-  border-radius: 50%;
-  text-align: center;
-  width: 36px;
-  height: 36px;
-  transition: 0.3s;
-  margin-right: 10px;
-}
-
-.contact .info .social-links a:hover {
-  background: #149ddd;
-  color: #fff;
-}
-
-.contact .info .email:hover i,
-.contact .info .address:hover i,
-.contact .info .phone:hover i {
-  background: #149ddd;
-  color: #fff;
-}
-
+/* The following CSS is removed based on the plan */
+/*
 .contact .php-email-form {
   width: 100%;
   padding: 30px;
@@ -990,7 +1002,7 @@ section {
 }
 
 .contact .php-email-form button[type=submit] {
-  background: #149ddd;
+  background: #28a745;
   border: 0;
   padding: 10px 24px;
   color: #fff;
@@ -999,7 +1011,7 @@ section {
 }
 
 .contact .php-email-form button[type=submit]:hover {
-  background: #37b3ed;
+  background: #30c750;
 }
 
 @-webkit-keyframes animate-loading {
@@ -1021,6 +1033,7 @@ section {
     transform: rotate(360deg);
   }
 }
+*/
 
 /*--------------------------------------------------------------
 # Breadcrumbs
@@ -1051,7 +1064,7 @@ section {
 .breadcrumbs ol li+li::before {
   display: inline-block;
   padding-right: 10px;
-  color: #0e2442;
+  color: #0a1d0d;
   content: "/";
 }
 
@@ -1102,3 +1115,5 @@ section {
     padding-right: 20px 15px;
   }
 }
+
+
